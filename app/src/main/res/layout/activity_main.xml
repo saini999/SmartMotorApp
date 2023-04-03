@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/loginRegText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login.AppRegText"
+        android:textColor="@color/login.RegText"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.513" />
+
+    <EditText
+        android:id="@+id/loginDevicePhone"
+        android:layout_width="213dp"
+        android:layout_height="44dp"
+        android:ems="10"
+        android:hint="@string/login.NumInp"
+        android:inputType="phone"
+        android:maxEms="10"
+        android:textAlignment="center"
+        android:textColor="@color/login.DeviceNum"
+        android:textColorHint="@color/login.DeviceNum"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginRegText"
+        app:layout_constraintVertical_bias="0.107" />
+
+    <EditText
+        android:id="@+id/loginDevicePass"
+        android:layout_width="126dp"
+        android:layout_height="46dp"
+        android:ems="4"
+        android:hint="@string/login.PassInp"
+        android:inputType="numberPassword"
+        android:maxEms="4"
+        android:textAlignment="center"
+        android:textColor="@color/login.DevicePass"
+        android:textColorHint="@color/login.DevicePass"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginDevicePhone"
+        app:layout_constraintVertical_bias="0.105" />
+
+    <ImageView
+        android:id="@+id/loginDevicePhoneContainer"
+        android:layout_width="239dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="86dp"
+        android:layout_marginTop="411dp"
+        android:layout_marginEnd="86dp"
+        android:layout_marginBottom="255dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/inputcon" />
+
+    <ImageView
+        android:id="@+id/loginDevicePassContainer"
+        android:layout_width="205dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="103dp"
+        android:layout_marginTop="490dp"
+        android:layout_marginEnd="103dp"
+        android:layout_marginBottom="192dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/inputcon" />
+
+    <Button
+        android:id="@+id/loginRegisterBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/login.RegBtn"
+        android:text="@string/login.RegBtn"
+        android:textColor="@color/login.RegBtnText"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginDevicePass"
+        app:layout_constraintVertical_bias="0.201" />
+
+    <Button
+        android:id="@+id/loginHelpBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="@color/login.HelpBtn"
+        android:text="@string/login.HelpBtn"
+        android:textColor="@color/login.HelpBtnText"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/loginBuyBtn"
+        app:layout_constraintHorizontal_bias="0.415"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/loginBuyBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="44dp"
+        android:backgroundTint="@color/login.BuyBtn"
+        android:text="@string/login.BuyBtn"
+        android:textColor="@color/login.BuyBtnText"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/loginHelpBtn"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
