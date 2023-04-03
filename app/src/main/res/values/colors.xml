@@ -12,6 +12,7 @@
     <!-- Login Page Colors -->
     <color name="login.RegText">#000000</color>
     <color name="login.DeviceNum">#000000</color>
+    <color name="login.PhoneNum">#000000</color>
     <color name="login.DevicePass">#000000</color>
     <color name="login.RegBtn">#15b374</color>
     <color name="login.HelpBtn">#ad3931</color>

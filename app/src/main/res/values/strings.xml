@@ -3,6 +3,7 @@
     <!-- Login Page Strings -->
     <string name="login.AppRegText">Device Registration</string>
     <string name="login.NumInp">Enter Device Number</string>
+    <string name="login.phoneInp">Enter Your Phone</string>
     <string name="login.PassInp">Device Pin</string>
     <string name="login.RegBtn">Register</string>
     <string name="login.HelpBtn">Need Help?</string>
