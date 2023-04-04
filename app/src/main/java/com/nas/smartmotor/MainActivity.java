@@ -3,6 +3,7 @@ package com.nas.smartmotor;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
@@ -12,8 +13,10 @@ import android.os.Handler;
 import android.telephony.SmsManager;
 
 
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity  {
     private static final int READ_SMS_PERMISSION_CODE = 445566;
     EditText devicenum, phonenum, devicepin;
     Button register, help, buy;
+    ProgressBar bar;
     String msg,to;
     String requestId,requestIdSv;
     SharedPreferences deviceData;
@@ -51,6 +55,8 @@ public class MainActivity extends AppCompatActivity  {
         register = (Button) findViewById(R.id.loginRegisterBtn);
         help = (Button) findViewById(R.id.loginHelpBtn);
         buy = (Button) findViewById(R.id.loginBuyBtn);
+        bar = (ProgressBar) findViewById(R.id.loginRegisterLoader);
+        bar.setVisibility(View.INVISIBLE);
 
         register.setOnClickListener(view -> {
             Random random = new Random();
@@ -69,6 +75,19 @@ public class MainActivity extends AppCompatActivity  {
             } else {
                 Toast.makeText(getApplicationContext(), "Missing Permissions.", Toast.LENGTH_LONG).show();
             }
+            register.setEnabled(false);
+            register.setVisibility(View.INVISIBLE);
+            bar.setVisibility(View.VISIBLE);
+           /* ProgressDialog progress;
+
+            progress = new ProgressDialog(this);
+            progress.setTitle("Please Wait!!");
+            progress.setMessage("Wait!!");
+            progress.setCancelable(true);
+            progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progress.show();
+            */
+
             /*SmsManager sms = SmsManager.getDefault();
             sms.sendTextMessage(to,null,msg,null,null);
             Toast.makeText(getApplicationContext(), "Message Sent! Waiting for Response!",
