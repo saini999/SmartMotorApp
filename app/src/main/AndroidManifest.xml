@@ -28,15 +28,6 @@
         <activity
             android:name=".main_control"
             android:exported="true" />
-        <receiver
-            android:name=".MessageReceiver"
-            android:enabled="true"
-            android:exported="true"
-            android:priority="1000">
-            <intent-filter android:priority="1000">
-                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
-            </intent-filter>
-        </receiver>
     </application>
 
 </manifest>

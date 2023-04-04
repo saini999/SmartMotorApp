@@ -5,8 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.net.Uri;
+
 import android.os.Bundle;
 
 import android.os.Handler;
@@ -21,11 +20,11 @@ import android.content.pm.PackageManager;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import java.util.Objects;
+
 import java.util.Random;
 
 
-public class MainActivity extends AppCompatActivity implements MessageListener {
+public class MainActivity extends AppCompatActivity  {
     private static final int PERMISSION_RQST_SEND = 0;
     private static final int READ_SMS_PERMISSION_CODE = 445566;
     EditText devicenum, phonenum, devicepin;
@@ -45,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MessageReceiver.bindListener(this);
         checkLogin();
         devicenum = (EditText) findViewById(R.id.loginDevicePhone);
         phonenum = (EditText) findViewById(R.id.loginPhone);
@@ -102,23 +100,22 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
                     }
                 }
             }
-            @Override
-            public void messageReceived(String message) {
-                Toast.makeText(this, "New Message Received: " + message, Toast.LENGTH_SHORT).show();
-            }
+
             public void checkLogin() {
                 String phone1 = null;
-                if(deviceData == null) {
+                if (deviceData == null) {
                     deviceData = getSharedPreferences("LoginData", MODE_PRIVATE);
                     phone1 = deviceData.getString("phonenum", "");
                 }
                 if (phone1 != null && !phone1.equals("")) {
-                    Toast.makeText(getApplicationContext(),"Welcome " + phone1, Toast.LENGTH_LONG).show();
-                       Intent i = new Intent(MainActivity.this, main_control.class);
-                       startActivity(i);
-                       finish();
-                    }
+                    Toast.makeText(getApplicationContext(), "Welcome " + phone1, Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(MainActivity.this, main_control.class);
+                    startActivity(i);
+                    finish();
                 }
+            }
+
+            /*
             public String checkResponse(String rid) {
                 if (phonenum.getText().toString() != null) {
                     Cursor c = null;
@@ -152,6 +149,7 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
                     return null;
                 }
             }
+            */
         Handler handler = new Handler();
         final int delay = 1000;
          Runnable runnable;
@@ -161,18 +159,21 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
         handler.postDelayed(runnable = () -> {
             handler.postDelayed(runnable, delay);
             //code
-            if(checkResponse(requestIdSv).contains("Connected")){
-                deviceData = getSharedPreferences("LoginData", MODE_PRIVATE);
-                deviceDataEditor = deviceData.edit();
-                deviceDataEditor.putString("phonenum", phonenum.getText().toString());
-                deviceDataEditor.commit();
-                Intent i = new Intent(MainActivity.this,main_control.class);
-                startActivity(i);
-                finish();
-            } else if (checkResponse(requestIdSv).contains("NumberMismatch")) {
+            checkSms sms = new checkSms();
+            if(sms.getSms(this, requestIdSv, to) != null) {
+                if (sms.getSms(this, requestIdSv, to).contains("Connected")) {
+                    deviceData = getSharedPreferences("LoginData", MODE_PRIVATE);
+                    deviceDataEditor = deviceData.edit();
+                    deviceDataEditor.putString("phonenum", phonenum.getText().toString());
+                    deviceDataEditor.commit();
+                    Intent i = new Intent(MainActivity.this, main_control.class);
+                    startActivity(i);
+                    finish();
+                } else if (sms.getSms(this, requestIdSv, to).contains("NumberMismatch")) {
 
-            } else if (checkResponse(requestIdSv).contains("RequestIDMismatch")) {
-                Toast.makeText(this, "RID Mismatch", Toast.LENGTH_LONG).show();
+                } else if (sms.getSms(this, requestIdSv, to).contains("RequestIDMismatch")) {
+                    Toast.makeText(this, "RID Mismatch", Toast.LENGTH_LONG).show();
+                }
             }
         }, delay);
         super.onResume();
