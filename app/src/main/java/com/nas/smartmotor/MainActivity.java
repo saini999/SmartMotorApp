@@ -115,41 +115,6 @@ public class MainActivity extends AppCompatActivity  {
                 }
             }
 
-            /*
-            public String checkResponse(String rid) {
-                if (phonenum.getText().toString() != null) {
-                    Cursor c = null;
-                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                        c = getContentResolver().query(Uri.parse("content://sms/inbox"), null, null, null);
-                    }
-                    assert c != null;
-                    c.moveToFirst();
-                    String tempnum = null;
-                    String tempbody = null;
-                    tempnum = c.getString(c.getColumnIndex("address"));
-                    tempbody = c.getString(c.getColumnIndex("body"));
-                    if (to != null) {
-                        if (tempnum.contains(to)) {
-                            if (rid != null) {
-                                if (tempbody.contains(rid)) {
-                                    return tempbody;
-                                } else {
-                                    return "RequestIDMismatch";
-                                }
-                            } else {
-                                return "NoNumber";
-                            }
-                        } else {
-                            return "NumberMismatch";
-                        }
-                    } else {
-                        return "NumberMismatch";
-                    }
-                }else {
-                    return null;
-                }
-            }
-            */
         Handler handler = new Handler();
         final int delay = 1000;
          Runnable runnable;
