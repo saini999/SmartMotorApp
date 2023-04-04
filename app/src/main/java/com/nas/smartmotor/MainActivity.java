@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 
+import android.os.Handler;
 import android.telephony.SmsManager;
 
 
@@ -18,6 +21,8 @@ import android.content.pm.PackageManager;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import java.util.Objects;
+import java.util.Random;
 
 
 public class MainActivity extends AppCompatActivity implements MessageListener {
@@ -26,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
     EditText devicenum, phonenum, devicepin;
     Button register, help, buy;
     String msg,to;
+    String requestId,requestIdSv;
     SharedPreferences deviceData;
     SharedPreferences.Editor deviceDataEditor;
 
@@ -49,23 +55,18 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
         buy = (Button) findViewById(R.id.loginBuyBtn);
 
         register.setOnClickListener(view -> {
-
+            Random random = new Random();
             //Intent intent = new Intent(getApplicationContext(),MainActivity.class);
             //PendingIntent pi = PendingIntent.getActivity(getApplicationContext(),0,intent,0);
-            msg = "@LK" + devicepin.getText().toString() + "&" + phonenum.getText().toString();
+            requestId = String.format("%04d", random.nextInt(10000));
+            requestIdSv = requestId;
+            msg = "@LK" + devicepin.getText().toString() + "&" + phonenum.getText().toString() + "#" + requestId;
             to = devicenum.getText().toString();
 
             checkPerms();
             if(ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED) {
                 SmsManager smsManager = SmsManager.getDefault();
                 smsManager.sendTextMessage(to, null, msg, null, null);
-                deviceData = getSharedPreferences("LoginData", MODE_PRIVATE);
-                deviceDataEditor = deviceData.edit();
-                deviceDataEditor.putString("phonenum", phonenum.getText().toString());
-                deviceDataEditor.commit();
-                Intent i = new Intent(MainActivity.this,main_control.class);
-                startActivity(i);
-                finish();
                 Toast.makeText(getApplicationContext(), "Msg Sent. Loading...", Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(getApplicationContext(), "Missing Permissions.", Toast.LENGTH_LONG).show();
@@ -95,13 +96,6 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
                             Toast.makeText(getApplicationContext(), "Permission Granted!, Sending Message.", Toast.LENGTH_LONG).show();
                             SmsManager smsManager = SmsManager.getDefault();
                             smsManager.sendTextMessage(to, null, msg, null, null);
-                            deviceData = getSharedPreferences("LoginData", MODE_PRIVATE);
-                            deviceDataEditor = deviceData.edit();
-                            deviceDataEditor.putString("phonenum", phonenum.getText().toString());
-                            deviceDataEditor.commit();
-                            Intent i = new Intent(MainActivity.this,main_control.class);
-                            startActivity(i);
-                            finish();
                         } else {
                             Toast.makeText(getApplicationContext(), "Missing Permission to Send SMS!", Toast.LENGTH_LONG).show();
                         }
@@ -125,5 +119,67 @@ public class MainActivity extends AppCompatActivity implements MessageListener {
                        finish();
                     }
                 }
+            public String checkResponse(String rid) {
+                if (phonenum.getText().toString() != null) {
+                    Cursor c = null;
+                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                        c = getContentResolver().query(Uri.parse("content://sms/inbox"), null, null, null);
+                    }
+                    assert c != null;
+                    c.moveToFirst();
+                    String tempnum = null;
+                    String tempbody = null;
+                    tempnum = c.getString(c.getColumnIndex("address"));
+                    tempbody = c.getString(c.getColumnIndex("body"));
+                    if (to != null) {
+                        if (tempnum.contains(to)) {
+                            if (rid != null) {
+                                if (tempbody.contains(rid)) {
+                                    return tempbody;
+                                } else {
+                                    return "RequestIDMismatch";
+                                }
+                            } else {
+                                return "NoNumber";
+                            }
+                        } else {
+                            return "NumberMismatch";
+                        }
+                    } else {
+                        return "NumberMismatch";
+                    }
+                }else {
+                    return null;
+                }
+            }
+        Handler handler = new Handler();
+        final int delay = 1000;
+         Runnable runnable;
 
+    @Override
+    protected void onResume() {
+        handler.postDelayed(runnable = () -> {
+            handler.postDelayed(runnable, delay);
+            //code
+            if(checkResponse(requestIdSv).contains("Connected")){
+                deviceData = getSharedPreferences("LoginData", MODE_PRIVATE);
+                deviceDataEditor = deviceData.edit();
+                deviceDataEditor.putString("phonenum", phonenum.getText().toString());
+                deviceDataEditor.commit();
+                Intent i = new Intent(MainActivity.this,main_control.class);
+                startActivity(i);
+                finish();
+            } else if (checkResponse(requestIdSv).contains("NumberMismatch")) {
+
+            } else if (checkResponse(requestIdSv).contains("RequestIDMismatch")) {
+                Toast.makeText(this, "RID Mismatch", Toast.LENGTH_LONG).show();
+            }
+        }, delay);
+        super.onResume();
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        handler.removeCallbacks(runnable); //stop handler when activity not visible super.onPause();
+    }
 }
