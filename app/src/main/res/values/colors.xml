@@ -20,4 +20,29 @@
     <color name="login.RegBtnText">#f5eae9</color>
     <color name="login.HelpBtnText">#f5eae9</color>
     <color name="login.BuyBtnText">#f5eae9</color>
+
+    <!-- Power Status Page Colors -->
+    <color name="pwr.background">#166ea6</color>
+    <color name="pwr.noPowerText">#ad3931</color>
+    <color name="pwr.activePowerText">#15b374</color>
+    <color name="pwr.RYv">#000000</color>
+    <color name="pwr.YBv">#000000</color>
+    <color name="pwr.BRv">#000000</color>
+    <color name="pwr.phaseSeq">#000000</color>
+    <color name="pwr.statusText">#000000</color>
+    <color name="pwr.btnControlMotorDisabled">#737878</color>
+    <color name="pwr.btnControlMotorEnabled">#15b374</color>
+    <color name="pwr.refreshPwrEnabled">#ad3931</color>
+    <color name="pwr.refreshPwrDisabled">#737878</color>
+    <color name="pwr.ok">#15b374</color>
+    <color name="pwr.error">#ad3931</color>
+    <color name="pwr.statusReady">#15b374</color>
+    <color name="pwr.statusRunning">#503b9c</color>
+    <color name="pwr.refreshPwrText">#f5eae9</color>
+    <color name="pwr.btnControlMotorText">#f5eae9</color>
+    <color name="pwr.RYvalue">#000000</color>
+    <color name="pwr.YBvalue">#000000</color>
+    <color name="pwr.BRvalue">#000000</color>
+    <color name="pwr.phaseSeqValue">#000000</color>
+    <color name="pwr.statusValue">#000000</color>
 </resources>

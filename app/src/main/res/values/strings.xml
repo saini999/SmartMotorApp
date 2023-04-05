@@ -9,5 +9,29 @@
     <string name="login.HelpBtn">Need Help?</string>
     <string name="login.BuyBtn">Buy Device</string>
 
+    <!--Power Status Page -->
+    <string name="pwr.pwrText">Connecting to Device...</string>
+    <string name="pwr.noPowerText">No Power!</string>
+    <string name="pwr.activePowerText">Power Available</string>
+    <string name="pwr.RYv">RY Voltage</string>
+    <string name="pwr.YBv">YB Voltage</string>
+    <string name="pwr.BRv">BR Voltage</string>
+    <string name="pwr.phaseSeq">Phase θ</string>
+    <string name="pwr.statusText">Device Status</string>
+    <string name="pwr.btnControlMotor">Motor Controls</string>
+    <string name="pwr.refreshPwr">Refresh Data</string>
+    <string name="pwr.ok">OK</string>
+    <string name="pwr.error">ALARM</string>
+    <string name="pwr.statusReady">Ready!</string>
+    <string name="pwr.statusRunning">Motor Running!</string>
+    <string name="pwr.RYvalue">NaN</string>
+    <string name="pwr.YBvalue">NaN</string>
+    <string name="pwr.BRvalue">NaN</string>
+    <string name="pwr.phaseSeqValue">NaN</string>
+    <string name="pwr.phsqRYB">RYB OK!</string>
+    <string name="pwr.phsqRBY">RBY NOT OK!</string>
+    <string name="pwr.statusValue">Not Connected!</string>
+
+
 
 </resources>

@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity  {
             */
         });
         }
-            protected void checkPerms() {
+            public void checkPerms() {
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
                     if (ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.SEND_SMS)) {
                     //do_Nothing
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity  {
                 if (sms.getSms(this, requestIdSv, to).contains("Connected")) {
                     deviceData = getSharedPreferences("LoginData", MODE_PRIVATE);
                     deviceDataEditor = deviceData.edit();
-                    deviceDataEditor.putString("phonenum", phonenum.getText().toString());
+                    deviceDataEditor.putString("phonenum", devicenum.getText().toString());
                     deviceDataEditor.commit();
                     Intent i = new Intent(MainActivity.this, main_control.class);
                     startActivity(i);

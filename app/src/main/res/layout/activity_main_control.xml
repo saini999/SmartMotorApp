@@ -4,5 +4,211 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    tools:context=".main_control"/>
+    android:background="@drawable/statuspagebg"
+    tools:context=".main_control">
+
+    <TextView
+        android:id="@+id/pwrText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="131dp"
+        android:layout_marginTop="112dp"
+        android:layout_marginEnd="132dp"
+        android:layout_marginBottom="576dp"
+        android:text="@string/pwr.pwrText"
+        android:textColor="@color/pwr.noPowerText"
+        android:textSize="32dp"
+        android:textStyle="bold|normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/pwrRYv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="198dp"
+        android:layout_marginEnd="226dp"
+        android:layout_marginBottom="503dp"
+        android:text="@string/pwr.RYv"
+        android:textColor="@color/pwr.RYv"
+        android:textSize="22dp"
+        android:textStyle="bold|normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/pwrYBv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="461dp"
+        android:text="@string/pwr.YBv"
+        android:textColor="@color/pwr.YBv"
+        android:textSize="22dp"
+        android:textStyle="bold|normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/pwrRYv"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/pwrRYv"
+        app:layout_constraintTop_toBottomOf="@+id/pwrRYv"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/pwrBRv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/pwr.BRv"
+        android:textColor="@color/pwr.BRv"
+        android:textSize="22dp"
+        android:textStyle="bold|normal"
+        app:layout_constraintEnd_toEndOf="@+id/pwrYBv"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/pwrYBv"
+        app:layout_constraintTop_toBottomOf="@+id/pwrYBv" />
+
+    <TextView
+        android:id="@+id/pwrPhaseSeq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="350dp"
+        android:layout_marginEnd="224dp"
+        android:layout_marginBottom="351dp"
+        android:text="@string/pwr.phaseSeq"
+        android:textColor="@color/pwr.phaseSeq"
+        android:textSize="22dp"
+        android:textStyle="bold|normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/pwrStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="401dp"
+        android:layout_marginBottom="287dp"
+        android:text="@string/pwr.statusText"
+        android:textColor="@color/pwr.statusText"
+        android:textSize="24dp"
+        android:textStyle="bold|normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/pwrPhaseSeq"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/pwrBtnMotorControl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="77dp"
+        android:layout_marginTop="496dp"
+        android:layout_marginEnd="78dp"
+        android:layout_marginBottom="185dp"
+        android:backgroundTint="@color/pwr.btnControlMotorEnabled"
+        android:text="@string/pwr.btnControlMotor"
+        android:textColor="@color/pwr.btnControlMotorText"
+        android:textSize="22dp"
+        android:textStyle="bold|normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/pwrBtnRefresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="@color/pwr.refreshPwrEnabled"
+        android:text="@string/pwr.refreshPwr"
+        android:textColor="@color/pwr.refreshPwrText"
+        android:textSize="22dp"
+        android:textStyle="bold|normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/pwrBtnMotorControl"
+        app:layout_constraintStart_toStartOf="@+id/pwrBtnMotorControl"
+        app:layout_constraintTop_toBottomOf="@+id/pwrBtnMotorControl"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/pwrRYvalue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginEnd="130dp"
+        android:text="@string/pwr.RYvalue"
+        android:textColor="@color/pwr.RYvalue"
+        android:textSize="22dp"
+        android:textStyle="bold|normal"
+        app:layout_constraintBottom_toBottomOf="@+id/pwrRYv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pwrRYv"
+        app:layout_constraintTop_toTopOf="@+id/pwrRYv"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/pwrYBvalue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="130dp"
+        android:text="@string/pwr.YBvalue"
+        android:textColor="@color/pwr.YBvalue"
+        android:textSize="22dp"
+        android:textStyle="bold|normal"
+        app:layout_constraintBottom_toBottomOf="@+id/pwrYBv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/pwrRYvalue"
+        app:layout_constraintTop_toTopOf="@+id/pwrYBv" />
+
+    <TextView
+        android:id="@+id/pwrBRvalue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="130dp"
+        android:text="@string/pwr.BRvalue"
+        android:textColor="@color/pwr.BRvalue"
+        android:textSize="22dp"
+        android:textStyle="bold|normal"
+        app:layout_constraintBottom_toBottomOf="@+id/pwrBRv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/pwrYBvalue"
+        app:layout_constraintTop_toTopOf="@+id/pwrBRv" />
+
+    <TextView
+        android:id="@+id/pwrPhaseSeqValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="130dp"
+        android:text="@string/pwr.phaseSeqValue"
+        android:textColor="@color/pwr.phaseSeqValue"
+        android:textSize="22dp"
+        android:textStyle="bold|normal"
+        app:layout_constraintBottom_toBottomOf="@+id/pwrPhaseSeq"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/pwrBRvalue"
+        app:layout_constraintTop_toTopOf="@+id/pwrPhaseSeq" />
+
+    <TextView
+        android:id="@+id/pwrStatusValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pwr.statusValue"
+        android:textColor="@color/pwr.statusValue"
+        android:textSize="22dp"
+        android:textStyle="bold|normal"
+        app:layout_constraintBottom_toBottomOf="@+id/pwrStatus"
+        app:layout_constraintStart_toStartOf="@+id/pwrPhaseSeqValue"
+        app:layout_constraintTop_toTopOf="@+id/pwrStatus"
+        app:layout_constraintVertical_bias="1.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>
