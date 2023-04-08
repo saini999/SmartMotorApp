@@ -4,6 +4,7 @@ import static com.nas.smartmotor.R.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -60,6 +61,9 @@ public class main_control extends AppCompatActivity {
             if(isMotorBtn){
                 if(alarm.contains("AOK")){
                     Toast.makeText(this, "CLICK!! Motor", Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(main_control.this, motorControlActivity.class);
+                    startActivity(i);
+                    finish();
                 } else {
                     Toast.makeText(this, "SYSTEM ALARM ACTIVE!", Toast.LENGTH_LONG).show();
                 }
@@ -106,7 +110,7 @@ public class main_control extends AppCompatActivity {
             String smsData = null;
             smsData = getSms.getSms(this, requestIDSv, deviceNum);
             if(smsData != null) {
-                if(smsData.contains("@state")){
+                if(smsData.contains("@STATE")){
                     String tempRid = null;
                     tempRid = smsData.substring(smsData.indexOf("#RID") + 4, smsData.indexOf("#RID") + 8);
                     if(tempRid.contains(requestIDSv)){

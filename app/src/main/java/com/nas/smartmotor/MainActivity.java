@@ -1,18 +1,11 @@
 package com.nas.smartmotor;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-
 import android.os.Bundle;
-
 import android.os.Handler;
 import android.telephony.SmsManager;
-
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,12 +15,10 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
-
 import java.util.Random;
 
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
     private static final int PERMISSION_RQST_SEND = 0;
     private static final int READ_SMS_PERMISSION_CODE = 445566;
     EditText devicenum, phonenum, devicepin;
@@ -48,6 +39,7 @@ public class MainActivity extends AppCompatActivity  {
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         checkLogin();
         devicenum = (EditText) findViewById(R.id.loginDevicePhone);
         phonenum = (EditText) findViewById(R.id.loginPhone);
@@ -95,6 +87,7 @@ public class MainActivity extends AppCompatActivity  {
             */
         });
         }
+
             public void checkPerms() {
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
                     if (ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.SEND_SMS)) {
@@ -127,7 +120,7 @@ public class MainActivity extends AppCompatActivity  {
                     phone1 = deviceData.getString("phonenum", "");
                 }
                 if (phone1 != null && !phone1.equals("")) {
-                    Toast.makeText(getApplicationContext(), "Welcome " + phone1, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Welcome!", Toast.LENGTH_LONG).show();
                     Intent i = new Intent(MainActivity.this, main_control.class);
                     startActivity(i);
                     finish();
@@ -137,15 +130,16 @@ public class MainActivity extends AppCompatActivity  {
         Handler handler = new Handler();
         final int delay = 1000;
          Runnable runnable;
-
     @Override
     protected void onResume() {
         handler.postDelayed(runnable = () -> {
             handler.postDelayed(runnable, delay);
             //code
             checkSms sms = new checkSms();
-            if(sms.getSms(this, requestIdSv, to) != null) {
-                if (sms.getSms(this, requestIdSv, to).contains("Connected")) {
+            String msgdata;
+            msgdata = sms.getSms(this, requestIdSv, to);
+            if(msgdata != null) {
+                if (msgdata.contains("Connected")) {
                     deviceData = getSharedPreferences("LoginData", MODE_PRIVATE);
                     deviceDataEditor = deviceData.edit();
                     deviceDataEditor.putString("phonenum", devicenum.getText().toString());
@@ -167,4 +161,5 @@ public class MainActivity extends AppCompatActivity  {
         super.onPause();
         handler.removeCallbacks(runnable); //stop handler when activity not visible super.onPause();
     }
+
 }

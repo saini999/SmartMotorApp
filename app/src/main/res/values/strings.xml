@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Smart Motor</string>
-    <!-- Login Page Strings -->
+    <!-- Login Page strings -->
     <string name="login.AppRegText">Device Registration</string>
     <string name="login.NumInp">Enter Device Number</string>
     <string name="login.phoneInp">Enter Your Phone</string>
@@ -31,6 +31,19 @@
     <string name="pwr.phsqRYB">RYB OK!</string>
     <string name="pwr.phsqRBY">RBY NOT OK!</string>
     <string name="pwr.statusValue">Not Connected!</string>
+
+    <!-- Motor Control Page strings -->
+    <string name="mtr.HeaderText">Status: </string>
+    <string name="mtr.HeaderValue">Not Connected!</string>
+    <string name="mtr.RefreshBtn">Refresh Data</string>
+    <string name="mtr.MotorOnBtn">Start\nMotor</string>
+    <string name="mtr.MotorOffBtn">Stop\nMotor</string>
+    <string name="mtr.SetTimeBtn">Start Motor\nwith Off Timer</string>
+    <string name="mtr.TimerHeader">Set Motor Off Timer</string>
+    <string name="mtr.TimerInput">HH : MM</string>
+    <string name="mtr.running">Motor Running!</string>
+    <string name="mtr.idle">Motor Idle/Off!</string>
+    <string name="mtr.alarm">System Alarm</string>
 
 
 

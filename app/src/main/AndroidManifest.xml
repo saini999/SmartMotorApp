@@ -15,7 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartMotor"
         tools:targetApi="31">
-
+        <activity
+            android:name=".motorControlActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

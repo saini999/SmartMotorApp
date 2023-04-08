@@ -45,4 +45,26 @@
     <color name="pwr.BRvalue">#000000</color>
     <color name="pwr.phaseSeqValue">#000000</color>
     <color name="pwr.statusValue">#000000</color>
+
+    <!-- Motor Control page colors -->
+    <color name="mtr.HeaderText">#000000</color>
+    <color name="mtr.HeaderValue">#000000</color>
+    <color name="mtr.RefreshBtnText">#f5eae9</color>
+    <color name="mtr.RefreshBtnEnabled">#ad3931</color>
+    <color name="mtr.RefreshBtnDisabled">#737878</color>
+    <color name="mtr.MotorOnBtnDisabled">#737878</color>
+    <color name="mtr.MotorOnBtnEnabled">#15b374</color>
+    <color name="mtr.MotorOnBtnText">#f5eae9</color>
+    <color name="mtr.MotorOffBtnDisabled">#737878</color>
+    <color name="mtr.MotorOffBtnEnabled">#ad3931</color>
+    <color name="mtr.MotorOffBtnText">#f5eae9</color>
+    <color name="mtr.SetTimeBtnDisabled">#737878</color>
+    <color name="mtr.SetTimeBtnEnabled">#15b374</color>
+    <color name="mtr.SetTimeBtnText">#f5eae9</color>
+    <color name="mtr.TimerHeader">#000000</color>
+    <color name="mtr.TimerInput">#000000</color>
+    <color name="mtr.TimeLeftText">#000000</color>
+    <color name="mtr.ok">#15b374</color>
+    <color name="mtr.error">#ad3931</color>
+    <color name="mtr.idle">#f0ac0e</color>
 </resources>
