@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Smart Motor</string>
+    <string name="app_name">Smart Pump</string>
     <!-- Login Page strings -->
     <string name="login.AppRegText">Device Registration</string>
     <string name="login.NumInp">Enter Device Number</string>

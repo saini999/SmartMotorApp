@@ -31,19 +31,19 @@ public class main_control extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(layout.activity_main_control);
-        header = (TextView) findViewById(id.pwrText);
-        RYText = (TextView) findViewById(id.pwrRYv);
-        YBText = (TextView) findViewById(id.pwrYBv);
-        BRText = (TextView) findViewById(id.pwrBRv);
-        RYValue = (TextView) findViewById(id.pwrRYvalue);
-        YBValue = (TextView) findViewById(id.pwrYBvalue);
-        BRValue = (TextView) findViewById(id.pwrBRvalue);
-        phaseText = (TextView) findViewById(id.pwrPhaseSeq);
-        phaseValue = (TextView) findViewById(id.pwrPhaseSeqValue);
-        statusText = (TextView) findViewById(id.pwrStatus);
-        statusValue = (TextView) findViewById(id.pwrStatusValue);
-        motorControl = (Button) findViewById(id.pwrBtnMotorControl);
-        refreshData = (Button) findViewById(id.pwrBtnRefresh);
+        header = findViewById(id.pwrText);
+        RYText = findViewById(id.pwrRYv);
+        YBText = findViewById(id.pwrYBv);
+        BRText = findViewById(id.pwrBRv);
+        RYValue = findViewById(id.pwrRYvalue);
+        YBValue = findViewById(id.pwrYBvalue);
+        BRValue = findViewById(id.pwrBRvalue);
+        phaseText = findViewById(id.pwrPhaseSeq);
+        phaseValue = findViewById(id.pwrPhaseSeqValue);
+        statusText = findViewById(id.pwrStatus);
+        statusValue = findViewById(id.pwrStatusValue);
+        motorControl = findViewById(id.pwrBtnMotorControl);
+        refreshData = findViewById(id.pwrBtnRefresh);
 
 
         Random random = new Random();
@@ -53,7 +53,7 @@ public class main_control extends AppCompatActivity {
         deviceDataEditor = deviceData.edit();
         deviceNum = deviceData.getString("phonenum", "");
         String msg;
-        msg = "@state" + "#" + requestIDSv + "&getData";
+        msg = "@STATE" + "#RID" + requestIDSv + "&GETDATA";
         motorControl.setBackgroundColor(getColor(color.pwr_btnControlMotorDisabled));
         refreshData.setBackgroundColor(getColor(color.pwr_refreshPwrDisabled));
         isMotorBtn = false;  isRefreshBtn = false;
@@ -76,7 +76,7 @@ public class main_control extends AppCompatActivity {
                 requestID = String.format("%04d", random.nextInt(1000));
                 requestIDSv = requestID;
                 String msgtemp;
-                msgtemp = "@state" + "#" + requestIDSv + "&getData";
+                msgtemp = "@STATE" + "#RID" + requestIDSv + "&GETDATA";
                 sms.sendTextMessage(deviceNum, null, msgtemp, null, null);
                 Toast.makeText(getApplicationContext(), "Connecting to Device. \n Request Sent!", Toast.LENGTH_LONG).show();
                 getData();

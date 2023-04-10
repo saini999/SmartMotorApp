@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             //PendingIntent pi = PendingIntent.getActivity(getApplicationContext(),0,intent,0);
             requestId = String.format("%04d", random.nextInt(10000));
             requestIdSv = requestId;
-            msg = "@LK" + devicepin.getText().toString() + "&" + phonenum.getText().toString() + "#" + requestId;
+            msg = "@LK" + devicepin.getText().toString() + "&" + phonenum.getText().toString() + "#RID" + requestId;
             to = devicenum.getText().toString();
 
             checkPerms();
@@ -139,11 +139,12 @@ public class MainActivity extends AppCompatActivity {
             String msgdata;
             msgdata = sms.getSms(this, requestIdSv, to);
             if(msgdata != null) {
-                if (msgdata.contains("Connected")) {
+                if (msgdata.contains("CONNECTED")) {
                     deviceData = getSharedPreferences("LoginData", MODE_PRIVATE);
                     deviceDataEditor = deviceData.edit();
                     deviceDataEditor.putString("phonenum", devicenum.getText().toString());
                     deviceDataEditor.commit();
+                    handler.removeCallbacks(runnable);
                     Intent i = new Intent(MainActivity.this, main_control.class);
                     startActivity(i);
                     finish();

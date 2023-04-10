@@ -44,7 +44,7 @@ public class motorControlActivity extends AppCompatActivity {
             if(isMotorOnBtn){
                 if(alarm.contains("AOK")){
                     Toast.makeText(this, "Starting Motor", Toast.LENGTH_LONG).show();
-                    sendRequest(true, "%MOTORSTATE=RUN");
+                    sendRequest(true, "%MOTORSTATE:RUN");
                     getData(true);
                 } else {
                     Toast.makeText(this, "SYSTEM ALARM ACTIVE!", Toast.LENGTH_LONG).show();
@@ -54,7 +54,7 @@ public class motorControlActivity extends AppCompatActivity {
         motorOffBtn.setOnClickListener(view -> {
             if(isMotorOffBtn){
                 Toast.makeText(this, "Stopping Motor", Toast.LENGTH_LONG).show();
-                sendRequest(true, "%MOTORSTATE=STP");
+                sendRequest(true, "%MOTORSTATE:STP");
                 getData(true);
             }
         });
@@ -76,7 +76,7 @@ public class motorControlActivity extends AppCompatActivity {
                     String text = String.format(Locale.getDefault(), "%02d:%02d", hour, minute) + " Set, Click to Change";
                     updateTimeBtn.setText(text);
                     setTime = String.format(Locale.getDefault(),"%02d:%02d", hour, minute);
-                    sendRequest(true, "%MOTORSTATE=RUN%TIME=" + setTime);
+                    sendRequest(true, "%MOTORSTATE:RUN%TIME:" + setTime);
                     getData(true);
                 };
                 TimePickerDialog timePickerDialog = new TimePickerDialog(this, /*style,*/ onTimeSetListener, hour, minute, true);
@@ -162,9 +162,9 @@ public class motorControlActivity extends AppCompatActivity {
         requestIDSv = requestID;
         String msgtemp;
         if(!mode) {
-            msgtemp = "@STATE" + "#" + requestIDSv + "&getData";
+            msgtemp = "@STATE" + "#RID" + requestIDSv + "&GETDATA";
         } else {
-            msgtemp = "@STATE" + "#" + requestIDSv + "&setData=" + request;
+            msgtemp = "@STATE" + "#RID" + requestIDSv + "&SETDATA=" + request;
         }
         sms.sendTextMessage(deviceNum, null, msgtemp, null, null);
         Toast.makeText(getApplicationContext(), "Connecting to Device. \n Request Sent!", Toast.LENGTH_LONG).show();
