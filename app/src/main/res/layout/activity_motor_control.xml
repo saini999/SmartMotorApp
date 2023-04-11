@@ -12,32 +12,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="177dp"
-        android:layout_marginEnd="250dp"
-        android:layout_marginBottom="699dp"
         android:text="@string/mtr.HeaderText"
         android:textColor="@color/mtr.HeaderText"
         android:textSize="28sp"
         android:textStyle="bold|normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.211"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.194" />
 
     <TextView
         android:id="@+id/mtrStatusValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="54dp"
+        android:layout_marginStart="16dp"
         android:text="@string/mtr.HeaderValue"
         android:textColor="@color/mtr.HeaderValue"
         android:textSize="28sp"
         android:textStyle="bold|normal"
         app:layout_constraintBottom_toBottomOf="@+id/mtrStatusHeader"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/mtrStatusHeader"
-        app:layout_constraintTop_toTopOf="@+id/mtrStatusHeader" />
+        app:layout_constraintTop_toTopOf="@+id/mtrStatusHeader"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/mtrRefreshDataBtn"
